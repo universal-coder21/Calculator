@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Free CDN (All Styles) -->
+<!-- Material Symbols (Outlined) - Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="display-opt">
+            <input type="text" id="results" readonly>
+            <input type="text" id="result" readonly>
+        </div>
+        <div class="buttons">
+            <div class="rows">
+                <button onclick="AC()" class="icons">AC</button>
+                <button onclick="clearDigit()" class="icons">
+                    <span class="material-symbols-outlined">
+backspace
+</span>
+                </button>
+                <button onclick="AddValue('%')" class="icons">%</button>
+                <button onclick="AddValue('÷')" class="ArithmeticOprtr">÷</button>
+            </div>
+            <div class="rows">
+                <button onclick="AddValue('7')">7</button>
+                <button onclick="AddValue('8')">8</button>
+                <button onclick="AddValue('9')">9</button>
+                <button onclick="AddValue('*')" class="ArithmeticOprtr">×</button>
+            </div>
+            <div class="rows">
+                <button onclick="AddValue('4')">4</button>
+                <button onclick="AddValue('5')">5</button>
+                <button onclick="AddValue('6')">6</button>
+                <button onclick="AddValue('-')" class="ArithmeticOprtr">-</button>
+            </div>
+            <div class="rows">
+                <button onclick="AddValue('1')">1</button>
+                <button onclick="AddValue('2')">2</button>
+                <button onclick="AddValue('3')">3</button>
+                <button onclick="AddValue('+')" class="ArithmeticOprtr">+</button>
+            </div>
+            <div class="rows">
+                <button onclick="AddValue('0')" id="zero">0</button>
+                <button onclick="AddValue('.')">.</button>
+                <button onclick="calculate()" class="ArithmeticOprtr">=</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
