@@ -8,16 +8,16 @@ let isOperator = (char) => {
 let AddValue = (val) => {
     let current = input.value;
     let lastChar = current.slice(-1);
-
+    
     // Clear input on previous result or error
     if (current.startsWith("=") || current === "Error") {
         input.value = "";
         current = "";
     }
-
+    
     // Prevent operator as first character (except minus)
     if (isOperator(val) && val !== "-" && current === "") return;
-
+    
     // Replace last operator if two operators in a row
     if (isOperator(val) && isOperator(lastChar)) {
         input.value = current.slice(0, -1) + val;
@@ -33,20 +33,36 @@ let clearDigit = () => {
 let calculate = () => {
     try {
         let expression = input.value;
-
+        
         // Replace divide symbol with slash for eval
         expression = expression.replace(/÷/g, "/");
-
+        
         // Avoid evaluation if expression ends with operator
         if (isOperator(expression.slice(-1))) {
             input.value = "Error";
             output.value = "";
             return;
         }
-
+        
+        // Check for division by zero
+        if (expression.includes("/0") && !expression.includes("/0.")) {
+            input.value = "Error";
+            output.value = "";
+            return;
+        }
+        
         let result = eval(expression);
+        
+        // Check if result is finite
+        if (!isFinite(result)) {
+            input.value = "Error";
+            output.value = "";
+            return;
+        }
+        
         output.value = input.value;
         input.value = "=\t" + result;
+        
     } catch (err) {
         console.log(err);
         input.value = "Error";
